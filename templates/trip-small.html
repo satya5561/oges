@@ -1,0 +1,16 @@
+<ion-item class="item item-avatar item-text-wrap" href="#/tab/trips/{{trip.id}}">
+  <img class="down" ng-src="{{trip.user.profile_picture_url}}"/>
+  <div class='pull-right chat-room-status'>{{trip.status}}</div>
+  <h4>{{trip.starting_point.name}} <i class="icon ion-arrow-right-c"></i> {{trip.destination.name}}</h4>
+  <h4>{{trip.leaving_at_date}} at {{trip.leaving_at_time}}</h4>
+  <h4 class='muted'>
+    <strong ng-show="trip.user.id != user.id">{{trip.user.name}}</strong> 
+    <strong ng-show="trip.user.id == user.id">You</strong> | 
+    <ng-pluralize count="trip.seats_available"
+                     when="{'0': 'Full',
+                         'one': '1 Seat',
+                         'other': '{} Seats'}">
+    </ng-pluralize> 
+    <span ng-show="trip.female_only">| <i class="icon ion-female"></i></span> | {{trip.price}}
+  </h4>
+</ion-item>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Coride.co</title>
+    
+    <link href="lib/css/ionic.css" rel="stylesheet">
+    <link href="lib/css/angular-pickadate.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAWwF5C9S1fK7d-nAaMzsG2LdZ0JXe-ECY&sensor=true&region=US"></script>
+
+    <!-- ionic/angularjs scripts -->
+    <script src="lib/js/ionic.bundle.js"></script>
+    <script src="lib/js/angular/angular-resource.min.js"></script>
+    <script src="lib/js/ng-map.min.js"></script>
+    <script src="lib/js/angular-pickadate.js"></script>
+    <script src="lib/js/ui-bootstrap/ui-bootstrap-custom-tpls-0.10.0.min.js"></script>
+    <script src="lib/js/ui-bootstrap/ui-bootstrap-custom-0.10.0.min.js"></script>
+    <script src="lib/js/sugar.min.js"></script>
+
+    <!-- WEBSOCKET-RAILS --> 
+    <script src="lib/js/websocket-rails/websocket_rails.js"></script>
+    <script src="lib/js/websocket-rails/event.js"></script>
+    <script src="lib/js/websocket-rails/abstract_connection.js"></script>
+    <script src="lib/js/websocket-rails/http_connection.js"></script>
+    <script src="lib/js/websocket-rails/websocket_connection.js"></script>
+    <script src="lib/js/websocket-rails/channel.js"></script>
+
+    <script src="cordova.js"></script>
+    <script src="cordova_plugins.js"></script>
+    <script scr="phonegap.js"></script>
+    <script src="cdv-plugin-fb-connect.js"></script> 
+    <script src="facebook-js-sdk.js"></script>
+    
+    <!-- APP -->
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/interceptors.js"></script>
+
+    <!-- CONTROLLERS -->
+    <script src="js/controllers/share_controller.js"></script>
+    <script src="js/controllers/sessions_controller.js"></script>
+    <script src="js/controllers/passwords_controller.js"></script>
+    <script src="js/controllers/payments_controller.js"></script>
+    <script src="js/controllers/cars_controller.js"></script>
+    <script src="js/controllers/registrations_controller.js"></script>
+    <script src="js/controllers/destinations_controller.js"></script>
+    <script src="js/controllers/chat_rooms_controller.js"></script>
+    <script src="js/controllers/trips_controller.js"></script>
+    <script src="js/controllers/requests_controller.js"></script>
+    <script src="js/controllers/users_controller.js"></script>
+    <script src="js/controllers/reviews_controller.js"></script>
+    <script src="js/controllers/transfers_controller.js"></script>
+    <script src="js/controllers/bookings_controller.js"></script>
+    <script src="js/controllers/tutorial_controller.js"></script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">
+      // Stripe.setPublishableKey('pk_test_MEZ2eaiO4P672dse94ZFGw7h'); // DEVELOPMENT
+      Stripe.setPublishableKey('pk_live_fbgPZYqWeo75wxXt1evLQ6gV'); // PRODUCTION
+    </script>
+  </head>
+  <body ng-app="coride">
+    <ion-nav-bar ng-class="(barClass) ? barClass : 'bar-positive'" animation="nav-title-slide-ios7">
+      <!-- <ion-nav-back-button class="button-icon button-clear icon ion-arrow-c-left">
+      </ion-nav-back-button> -->
+    </ion-nav-bar>
+    <ion-nav-view animaton="slide-left-right-ios7"></ion-nav-view>
+  </body>
+</html>
+

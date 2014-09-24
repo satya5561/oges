@@ -1,0 +1,97 @@
+<ion-view title="Edit Profile">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="back()">Cancel</button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" has-tabs="false">
+    <form ng-submit="updateUser()">
+      <ion-list>
+        <div class="item item-divider">Profile Picture (Square)</div>
+        <label class="item item-input item-avatar">
+          <span class="input-label"><img ng-src="{{user.profile_picture_url}}" width="60px"></span>
+          <input type="file" fileread="user.avatar" />
+        </label>
+        <div class="item item-divider">Cover Photo (Landscape)</div>
+        <label class="item item-input">
+          <span class="input-label"><img ng-src="{{user.cover_picture_url}}" width="60px"></span>
+          <input type="file" fileread="user.cover_picture" />
+        </label>
+        <div class="item item-divider">Personal Info</div>
+        <label class="item item-input">
+          <span class="input-label">First Name</span>
+          <input type="text" ng-model="user.first_name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Last Name</span>
+          <input type="text" ng-model="user.last_name">
+        </label>      
+        <label class="item item-input">
+          <span class="input-label">Birthday</span>
+          <input type="date" ng-model="user.birth_date" placeholder="MM/DD/YYYY">
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">Sex</div>
+          <select name="gender" ng-model="user.gender" required>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other" selected>Other</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">Talkativity</div>
+          <select name="gender" ng-model="user.conversation_level" required>
+            <option value="1">Shy</option>
+            <option value="2">Quiet</option>
+            <option value="3">Friendly</option>
+            <option value="4">Talkative</option>
+            <option value="5">Chatty</option>
+          </select>
+        </label>
+        <div class="item item-divider">Verifications</div>
+        <label class="item item-input">
+          <span class="input-label">Student Email</span>
+          <input type="email" ng-model="user.student_email">
+        </label> 
+        <div class="item item-divider">Profile</div>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">About You</span>
+          <textarea placeholder="Tell us a little about yourself." ng-model="user.bio"></textarea>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">What Music do you Like?</span>
+          <textarea placeholder="What do you enjoy listening to?" ng-model="user.music"></textarea>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Your Interests</span>
+          <textarea placeholder="Share your love for food, babies, your pets, or Coride!" ng-model="user.interests"></textarea>
+        </label>
+        <div class="item item-divider">I Don't Mind ...</div>
+        <ul class="list">
+          <li class="item item-checkbox">
+             <label class="checkbox">
+               <input type="checkbox" ng-model="user.allows_eating">
+             </label>
+             Eating
+          </li>
+          <li class="item item-checkbox">
+             <label class="checkbox">
+               <input type="checkbox" ng-model="user.allows_music">
+             </label>
+             Music
+          </li>
+          <li class="item item-checkbox">
+             <label class="checkbox">
+               <input type="checkbox" ng-model="user.allows_smoking">
+             </label>
+             Smoking
+          </li>
+        </ul>
+      </ion-list>
+      <div class="card">
+        <button type="submit" class="button button-block button-energized">
+          Update Profile
+        </button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

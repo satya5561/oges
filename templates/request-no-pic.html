@@ -1,0 +1,10 @@
+<ion-item class="item item-avatar item-text-wrap" href="#/tab/requests/{{request.id}}">
+  <img class="down" ng-src="{{request.user.profile_picture_url}}">
+  <div class='chat-room-status pull-right'>{{request.status}}</div>
+  <h3>{{request.user.name}}</h3>
+  <h4>{{request.starting_point.name}} <i class="icon ion-arrow-right-c"></i> {{request.destination.name}}</h4>
+  <h4>{{request.leaving_at_date}} {{request.leaving_around}}</h4>
+  <h4 class='muted'>
+    <span ng-show="request.female_only">| <i class="icon ion-female"></i></span>
+  </h4>
+</ion-item>

@@ -1,0 +1,18 @@
+<ion-view title="Edit Coride">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="back()">Cancel</button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="delete()">Remove</button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" has-tabs="false">
+    <div class="padding">
+      <form ng-submit="updateTrip()">
+        <div ng-include src="'templates/trip-form.html'"></div>
+        <br>
+        <button type="submit" class="button button-full button-energized">Update Coride</button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

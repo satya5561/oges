@@ -1,0 +1,69 @@
+<div class="list">
+  <autocomplete content="Starting Point" label="From" field="request.starting_point" icon="img/starting_point_icon.png"></autocomplete>
+  <autocomplete content="Destination" label="To" field="request.destination" icon="img/destination_icon.png"></autocomplete>
+  <label class="item item-input">
+    <span class="input-label">Date</span>
+    <input type="text" readonly="readonly" ng-click="openDateModal()" ng-model="request.leaving_at_date" required />
+  </label>
+  <div class="item item-input item-select">
+    <div class="input-label">
+      Around
+    </div>
+    <select ng-model="request.leaving_around">
+      <option selected>Whenever</option>
+      <option>Morning</option>
+      <option>Afternoon</option>
+      <option>Evening</option>
+      <option>Night</option>
+    </select>
+  </div>
+  <div class="item item-toggle" ng-show="current_user.student">
+     <strong>Student Only?</strong>
+     <label class="toggle toggle-royal">
+       <input type="checkbox" ng-model="request.student_only">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </div>
+  <div class="item item-toggle" ng-show="current_user.gender == 'female'">
+     <strong>Female Only?</strong>
+     <label class="toggle toggle-royal">
+       <input type="checkbox" ng-model="request.female_only">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </div>
+</div>
+<div class="list">
+  <div ng-hide="editRequest">
+    <div class="item item-toggle">
+       <strong>Return Request</strong>
+       <label class="toggle toggle-balanced">
+         <input type="checkbox" ng-model="roundTrip">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+       </label>
+    </div>
+    <div ng-show="roundTrip">
+      <label class="item item-input">
+        <span class="input-label">Return Date</span>
+        <input type="text" readonly="true" ng-click="openReturnDateModal()" ng-model="request.return_request_leaving_at_date" />
+      </label>
+      <div class="item item-input item-select">
+        <div class="input-label">
+          Returning Around
+        </div>
+        <select ng-model="request.return_request_leaving_around">
+          <option selected>Whenever</option>
+          <option>Morning</option>
+          <option>Afternoon</option>
+          <option>Evening</option>
+          <option>Night</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

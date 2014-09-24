@@ -1,0 +1,33 @@
+<ion-view title="" hide-nav-bar="true">
+  <div class="bg-image red-car-img"></div>
+  <ion-content padding="true" scroll="false">
+    <h1 class='login-title padding'>Taking a Trip? Make it a Coride</h1>
+    <button type="button" ng-click="facebookLogin()" class="button button-block button-positive">
+     <i class="icon ion-social-facebook"></i> Connect with Facebook
+    </button>
+    <div class='small respect-privacy text-center'>We will not post to Facebook without your approval </div>
+    <div class='login-bottom'>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="email" placeholder="Email" ng-model="user.email" required />
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="Password" ng-model="user.password" required />
+        </label>
+      </div>
+      <a href="#/password/new" class='pull-right forgot-password'>Forgot your password?</a>
+      <div class="row">
+        <div class="col">
+        <button ng-click="register()" class="button button-small button-positive button-block">
+          Register
+        </button>
+      </div>
+        <div class="col">
+          <button type="button" ng-click="login()" class="button button-small button-block button-energized">
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

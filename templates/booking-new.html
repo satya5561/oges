@@ -1,0 +1,104 @@
+<ion-view title="Book Coride">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="back()">Cancel</button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" has-subheader="false" has-tabs="false">
+    <div class="list">
+      <ion-item class="item item-thumbnail-left item-avatar item-text-wrap ng-cloak" ng-show="trip.id">
+        <img ng-click="driverDetails()" ng-src="{{trip.user.profile_picture_url}}">
+        <h3>{{trip.user.name}}</h3>
+        <h4>{{trip.starting_point.name}} <i class="icon ion-arrow-right-c"></i> {{trip.destination.name}}</h4>
+        <h4>{{trip.leaving_at_date}} at {{trip.leaving_at_time}}</h4>
+        <h4 class='muted'>
+          <ng-pluralize count="trip.seats_available"
+                           when="{'0': 'Full',
+                               'one': '1 Seat',
+                               'other': '{} Seats'}">
+          </ng-pluralize> 
+          <span ng-show="trip.female_only">| <i class="icon ion-female"></i></span> | <i class="icon ion-chatboxes"></i> {{trip.chat_rooms.count}} | {{trip.price}}</h4>
+      </ion-item> 
+      <div class='item'>
+        <h2>Total Fare <span class='pull-right'>{{trip.price}}</span></h2>
+      </div>
+      
+      <form ng-submit="createCard()" ng-show="show_card_form">
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="card.name" required title-case>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Number</span>
+          <input type="text" ng-model="card.number" pattern="\d*" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">CSV</span>
+          <input type="text" ng-model="card.cvc" pattern="\d*" required>
+        </label>
+        <label class='item item-input'>
+          <span class="input-label">MM/YYYY</span>
+          <select ng-model="card.exp_month">
+            <option>01</option>
+            <option>02</option>
+            <option>03</option>
+            <option>04</option>
+            <option>05</option>
+            <option>06</option>
+            <option>07</option>
+            <option>08</option>
+            <option>09</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+          </select>
+           / 
+          <select ng-model="card.exp_year">
+            <option ng-repeat="n in [2014, 2050] | makeRange">{{n}}</option>
+          </select>
+        </label>
+        <div class="row">
+          <div class="col">
+            <button class="button button-light button-block" ng-click="toggleNewCardForm()">Cancel</button>
+          </div>
+          <div class="col col-66">
+            <button class="button button-positive button-block">Add Card</button>
+          </div>
+        </div>
+      </form>
+
+      <form ng-submit="createBooking()" ng-hide="show_card_form">
+        <div class="list list-inset">
+        <div class='item item-icon-right ng-cloak'
+            ng-show="trip.price != 'Free' && cards" 
+            ng-click="toggleNewCardForm()">
+          <span class="muted">Add Card</span>
+          <i class="icon ion-android-add muted" style="font-size:20px"></i>
+        </div>
+        <ion-radio ng-repeat="card in cards"
+                   ng-value="card.id"
+                   ng-model="booking.stripe_card_id"
+                   ng-hide="trip.price == 'Free'"
+                   class="item ng-cloak">
+          <div class='row'>
+            <div class="col col-20">
+              <img ng-src="img/visa.png" ng-show="card.type == 'Visa'" width="40px">
+              <img ng-src="img/mastercard.png" ng-show="card.type == 'MasterCard'" width="40px">
+              <img ng-src="img/amex.png" ng-show="card.type == 'American Express'" width="40px">
+              <!-- TODO Visa, American Express, MasterCard, Discover, JCB, Diners Club, or Unknown. -->
+            </div>
+            <div class="col col-33">{{card.type}}</div>
+            <div class="col col-20">{{card.last4}}</div>
+            <div class="col">{{card.exp_month}}/{{card.exp_year}}</div>
+          </div>
+        </ion-radio>
+        </div>
+        <div class="padding ng-cloak" ng-show="trip.price">
+          <button type="submit" ng-show="trip.price == 'Free'" class="button button-full button-energized ng-cloak">Book Free Coride</button>
+          <button type="submit" ng-hide="trip.price == 'Free'" ng-disabled="!booking.stripe_card_id" class="button button-full button-energized ng-cloak">Book Coride</button>
+          <p class="ng-cloak" ng-hide="trip.price == 'Free'">You will <strong>NOT BE CHARGED</strong> until the driver confirms your booking</p>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+
+</ion-view>

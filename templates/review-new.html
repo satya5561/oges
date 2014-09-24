@@ -1,0 +1,39 @@
+<ion-view title="New Review">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="back()">Cancel</button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" has-tabs="false">
+    <form ng-submit="createReview()">
+    <div class="list">
+      <div class="item item-thumbnail-left item-avatar item-text-wrap">
+        <img ng-click="driverDetails()" src="{{reviewee.profile_picture_url}}">
+        <p>
+          {{reviewee.name}} | {{reviewee.age}} | <span ng-show="reviewee.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="reviewee.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="reviewee.gender == nil"><i class="icon ion-help"></i></span>
+        </p>
+        <p>{{reviewee.bio}}</p>
+      </div>
+      <div class="item item-divider" ng-show="reviewee.review_type == 'driver'"><i class='icon ion-model-s'></i> Driver</div>
+      <div class="item item-divider" ng-show="reviewee.review_type == 'passenger'"><i class='icon ion-android-location'></i> Passenger</div>
+      <div class="item item-divider" ng-show="reviewee.review_type == 'reference'"><i class='icon ion-person-stalker'></i> Reference</div>
+      <li class="item item-toggle">
+         <label class="toggle">
+           <input type="checkbox" ng-model="review.positive">
+           <div class="track">
+             <div class="handle"></div>
+           </div>
+         </label>
+         <p ng-show="review.positive">Positive</p>
+         <p ng-hide="review.positive">Negative</p>
+      </li>
+      <label class="item item-input">
+        <input type="text" ng-model="review.title" placeholder="Title" autofocus="true" required>
+      </label>
+      <label class="item item-input">
+        <textarea ng-model="review.body" placeholder="Description - Be Specific" required></textarea>
+      </label>
+      <button type="submit" class="button button-block button-energized">Review {{reviewee.name}}</button>
+     </div>
+   </form>
+  </ion-content>
+</ion-view>

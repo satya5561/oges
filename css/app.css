@@ -1,0 +1,659 @@
+/*BLUE: #59bbef, rgb: 89, 187, 239*/ /*#59bbef*/
+/*ORANGE: #f16623, rgb: 241, 102, 35*/
+
+#splash-page {
+  background-color: white;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.bar.bar-subheader.alert {
+  background: rgb(255, 255, 165);
+  border: 1px solid rgb(255, 226, 66);
+  text-align: center;
+}
+
+.bar.bar-subheader.alert h5 {
+  color: #8a6d3b;
+}
+
+.bar.bar-subheader.alert-success {
+  color: darkgreen;
+  background: lightgreen;
+  border: 1px solid rgb(4, 190, 4);;
+  text-align: center;
+}
+
+.bar.bar-subheader.alert-success h5 {
+  color:#3c763d;
+}
+
+#logo {
+  background: url('../img/ionic.png') no-repeat transparent;
+  width: 128px;
+  height: 128px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -64px 0px 0px -64px;
+}
+
+#map, map {
+  width: 100%;
+  height: 170px;
+  display: block;
+}
+
+.padding map {
+  border: 1px solid lightgrey;
+  margin-top: -1px;
+}
+
+.list {
+  background: white;
+}
+
+.muted {
+  color: grey;
+}
+
+p {
+margin: 0 0 5px;
+}
+
+.text-right {
+  text-align:right;
+}
+
+.text-left {
+  text-align:left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.item h2 {
+  font-size: 22px;
+}
+
+.bar.bar-positive {
+  background-color: #50a8de;
+  border-color: #3DA6C0;
+}
+
+.bar.bar-positive .button {
+  background-color: transparent;
+  border: transparent;
+}
+
+.tabs.tabs-positive {
+  background-color: #3DA6C0;
+  border-color:#246597;
+}
+
+.bar .title {
+  font-size: 20px;
+}
+
+.bar-transparent {
+  color:white;
+  background-color: transparent;
+}
+
+.bar-transparent h1 {
+  color:white;
+}
+
+.pull-right {
+  float:right;
+}
+
+.pull-left {
+  float:left;
+}
+
+.verification-icons {
+  font-size: 36px !important;
+}
+
+.valid-green {
+  color:rgb(11, 201, 11);
+}
+
+.pane {
+  background-color: #eee;
+}
+
+.small {
+  font-size:80% !important;
+}
+
+.trip-card {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+textarea {
+  height:90px;
+}
+
+button.button-block {
+  width: 93%;
+  margin: 0 auto;
+}
+
+.avatar-right {
+  max-height: 40px;
+  max-width: 40px;
+  margin: 5px 5px;
+}
+
+#map-canvas {
+  
+}
+
+/*.bar-header {
+  height: 60px;
+}
+
+.bar .title {
+  top: 16px;
+}
+
+.bar .title + .button:last-child, .bar > .button + .button:last-child, .bar > .button.pull-right, .bar .title + .buttons {
+top: 22px;
+}
+
+.bar .button-bar > .button, .bar .buttons > .button {
+top: 17px;
+}*/
+
+
+.button-outline {
+  border-radius: 80px;
+  padding: 3px 25px;
+}
+
+.button.button-battle-pink.button-outline {
+background: transparent;
+border-color: rgb(243, 48, 82);
+color: rgb(243, 48, 82);
+}
+
+
+.sub-header {
+  margin-top:5px;
+}
+
+.facebook {
+  background-color: #3A5998;
+  color:white !important;
+}
+
+.facebook-text {
+  color: #3A5998 !important;
+}
+
+.item-thumbnail-left img {
+  /*margin-top:6px;*/
+}
+
+.button.button-balanced {
+    background-color: hsl(173, 100%, 32%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00a390", endColorstr="#00a390");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#00a390), to(#00a390));
+  background-image: -moz-linear-gradient(top, #00a390, #00a390);
+  background-image: -ms-linear-gradient(top, #00a390, #00a390);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00a390), color-stop(100%, #00a390));
+  background-image: -webkit-linear-gradient(top, #00a390, #00a390);
+  background-image: -o-linear-gradient(top, #00a390, #00a390);
+  background-image: linear-gradient(#00a390, #00a390);
+  border-color: #00a390 #00a390 hsl(173, 100%, 32%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
+  -webkit-font-smoothing: antialiased;
+}
+
+.green {
+  color: hsl(173, 100%, 32%);
+}
+
+.button.button-positive {
+  background-color: #3C72CE;
+}
+
+.button.button-energized {
+  background-color: hsl(30, 100%, 48%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f47a00", endColorstr="#f47a00");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#f47a00), to(#f47a00));
+  background-image: -moz-linear-gradient(top, #f47a00, #f47a00);
+  background-image: -ms-linear-gradient(top, #f47a00, #f47a00);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f47a00), color-stop(100%, #f47a00));
+  background-image: -webkit-linear-gradient(top, #f47a00, #f47a00);
+  background-image: -o-linear-gradient(top, #f47a00, #f47a00);
+  background-image: linear-gradient(#f47a00, #f47a00);
+  border-color: #f47a00 #f47a00 hsl(30, 100%, 48%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
+  -webkit-font-smoothing: antialiased;
+}
+
+.red {
+  color:darkred;
+}
+
+.bg-image {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.van-img {
+  background-image: url("../img/van.png");
+}
+
+.red-car-img {
+  background-image: url("../img/roadtrip_red_car.jpg"); 
+}
+
+.puppie-img {
+  background-image: url("../img/puppie.png"); 
+}
+
+.road-img {
+  background-image: url("../img/road.png"); 
+}
+
+.login-title {
+  color:white;
+  font-family: Trebuchet MS1, Trebuchet MS, sans-serif;
+  text-align: center;
+  font-size: 36px;
+  margin-top: 10px !important;
+  margin-bottom:20px;
+}
+
+
+.share-buttons {
+  margin-top:0px;
+}
+
+.balance {
+  font-family: "Arial Black", Gadget, sans-serif !important;
+  font-size: 28px !important;
+  font-weight: bold;
+  color: #FF00EB !important;
+  margin-top: -4px;
+}
+
+.chat-room-status {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 11px;
+}
+
+.message-time {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 11px;
+  color: #888;
+}
+
+/*CHATROOM STYLING http://codepen.io/ionic/pen/rxysG*/
+
+.messages {
+  margin:0;
+  padding:0;
+  list-style-type:none;
+}
+
+.messages li {
+  display:block;
+  float:left;
+  clear:both;
+  max-width:65%;
+  margin:0 0 1rem 0;
+  padding:0;
+}
+
+.messages li.right {
+  float:right;
+}
+
+.messages li.right img {
+  float:right;
+}
+.messages li.right .small {
+  float:right;
+}
+
+/*
+.messages li:nth-child(even) {
+  float:right;
+}
+
+.messages li:nth-child(even) img {
+  float:right;
+}*/
+
+.messages p {
+  border-radius:.75rem;
+  background:#e6e5eb;
+  color:#383641;
+  padding:.6875rem;
+  margin:0;
+  font-size:.875rem;
+}
+
+.messages li.right p {
+  background:#158ffe;
+  color:#fff;
+}
+
+.messages img {
+  display:block;
+  max-width:65%;
+  border-radius:.75rem;
+}
+
+.post-options {
+  position: absolute;
+  font-size: 16px;
+  right: 5px;
+  bottom: 5px;
+  color: #888;
+}
+
+.cover-photo {
+  height:175px;
+  background-size: cover;
+  background-position-x: 50%;
+  background-repeat: no-repeat;
+}
+
+.user-tab-top {
+  position: relative;
+  background-color: white;
+  box-shadow: 0px -1px 10px rgba(0,0,0,0.4);
+}
+.user-tab-top img {
+  border-radius: 100px;
+  width:100px;
+}
+
+.user-tab-top .user-details {
+  position: relative;
+  bottom: 110px;
+  margin-bottom: -112px;
+}
+
+.user-details > h3 {
+  margin-top: -20px;
+  margin-bottom:5px;
+}
+
+.user-tab-edit-button {
+  float:right;
+  color:white !important;
+}
+
+.stats {
+  margin-bottom: -10px;
+}
+
+.item-avatar img {
+  border-radius: 100px !important;
+}
+
+.cards.item-radio .item-content {
+  padding-top:0;
+  padding-bottom:0;
+}
+
+.bar-footer input[type="text"] {
+  position: relative;
+  bottom: 1px;
+  margin-right: 52px;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.rounded-corners {
+  border-radius: 7px !important;
+}
+
+.item-divider {
+  background-color: #FCFCFC;
+  font-weight: normal;
+}
+
+.clear {
+  background: transparent;
+  border:none;
+}
+
+.ionic-contrib-blur {
+  overflow: hidden;
+  position:absolute;
+  width: 100%;
+  top:0;
+  left:0;
+  right:0;
+  -webkit-filter:blur(20px);
+  opacity:.25;
+  z-index: 1;
+}
+
+.bar-frosted {
+  background-color: #F7F7F7;
+}
+
+.facebook-verfication {
+  background-color: #3B5998;
+  color:white !important;
+}
+
+.no-padding {
+  padding:0;
+}
+
+.input-right {
+  text-align: right !important;
+  padding-right: 64px !important;
+  border:none;
+}
+
+.item-content .row, .item-content .col {
+  padding:0;
+}
+
+.divider-button {
+  float:right;
+  font-size:20px;
+  color:grey;
+}
+
+.forgot-password {
+  color:white;
+  margin-right:11px;
+  text-decoration: none;
+  margin-top:-13px;
+}
+
+.slider {
+  height: 100%;
+}
+
+.slider-slide {
+  padding-top: 100px;
+  color: #fff;
+  background-color: #333;
+  text-align: center;
+  font-family: "Helvetica Neue Thin", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 200;
+}
+
+.slider-slide h2, .slider-slide h3 {
+  font-family: "Helvetica Neue Thin", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #fff;
+  font-weight: 200;
+  margin-bottom: 15px;
+}
+
+.slider-slide hr {
+  width: 100px;
+}
+
+.slider-pager .slider-pager-page {
+  color: #fff;
+}
+
+.hr {
+  background-image: url("../img/swipe-img/1x/hr-faded.png");
+  height: 1px;
+}
+
+.hr > hr {
+  display: none;
+}
+
+img.coride-logo {
+  width: 70%;
+}
+
+.share-icon {
+  float: right;
+  position: absolute;
+  font-size: 30px;
+  top: 9px;
+  right: 6px;
+}
+
+.placeholder-icon:last-child {
+  padding-left: 6px;
+  padding-right: 15px;
+}
+
+.card:last-child {
+  margin-bottom: 35px;
+}
+/*
+.item-input {
+  padding: 6px 8px 5px 8px;
+}
+.item-input input {
+  text-align: right;
+}*/
+
+.login-bottom {
+  position: absolute;
+  bottom:0px;
+  right: 0px;
+  left: 0px;
+}
+
+.login-button button.button-block {
+  margin-top:0px;
+  margin-bottom:0px;
+}
+.button.button-block, .button.button-full {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.pickadate-cell .pickadate-active {
+  background-color: #f16623; /*#43cee6*/
+}
+
+.pickadate-cell .pickadate-enabled {
+  font-size: 15px;
+}
+
+.button-medium {
+  padding: 2px 4px 1px;
+  min-width: 44px;
+  min-height: 33px;
+  font-size: 13px;
+  line-height: 29px;
+}
+
+.timepicker-integers {
+  width:60px;
+  padding: 4px 0;
+}
+.timepicker-integers input {
+  padding: 0px;
+}
+
+.am-pm {
+  position: relative;
+  bottom: 5px;
+  padding-left: 5px;
+}
+
+.bar .title {
+  left: 42px !important;
+  right: 42px !important;
+}
+
+.trip-price {
+  position: absolute;
+  right: 35px;
+  top: 13px;
+  font-size:90%;
+}
+
+.down {
+  margin-top:5px;
+}
+
+.card .button-block {
+  margin-top: 5px;
+}
+
+.respect-privacy {
+  color:white;
+}
+
+.edit-button {
+  float:right;
+}
+
+.button-full.button-add-profile-pic {
+  margin-bottom:0;
+}
+
+.margin-none {
+  margin:0;
+}
+
+.spinner {
+  margin-top: 35px;
+}
+
+.mutual-friends {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.mutual-friends img {
+  margin: 5px 5px -2px;
+  width: 50px;
+  border-radius: 25px !important;
+}
+
+.mutual-friends p {
+  font-size: 10px !important;
+}
+
+.no-top-border {
+  border-top:none;
+}

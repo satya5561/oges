@@ -1,0 +1,118 @@
+<ion-view title="{{trip.destination.name}}">
+  <ion-nav-buttons side="left">
+    <button class="button icon ion-arrow-left-c" ng-click="back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-class="navbuttons.right.icon" ng-click="navbuttons.right.click()" ng-show="navbuttons">{{navbuttons.right.title}}</button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar-subheader alert ng-cloak" ng-show="trip.status == 'Booked'">
+    <h5>{{trip.status}} - Awaiting Confirmation</h5>
+  </ion-header-bar>
+  <ion-header-bar class="bar-subheader alert-success ng-cloak" ng-show="trip.status == 'Confirmed'">
+    <h5>Coride {{trip.status}}</h5>
+  </ion-header-bar>
+  
+  <ion-content class="has-header" has-subheader="true" has-tabs="true">
+    <a ng-click="banner.click()" class='button button-full button-energized button-add-profile-pic' ng-show="banner.click">
+      <i class="icon" ng-class="banner.icon"></i> {{banner.text}}
+    </a>
+    <div class="padding">
+      <div class="list">
+        <map id="map"
+          center="[49.07, -89.40]"
+          disable-default-u-i="true" 
+          zoom="4"
+          minZoom="2"
+          maxZoom="9"
+          scrollwheel="false"
+          mapTypeId="google.maps.MapTypeId.ROADMAP">
+        </map>
+        <div class="item item-text-wrap ng-cloak" ng-show="trip.destination.name">
+          <a href="#/trips/{{trip.id}}/edit" class="edit-button button button-clear" ng-show="trip.current_user" >Edit</a>
+          <h4>{{trip.starting_point.name}} <i class="icon ion-arrow-right-c"></i> {{trip.destination.name}}</h4>
+          <h4>{{trip.leaving_at_date}} at {{trip.leaving_at_time}}</h4>
+          <h4 class='muted'>
+            <strong>{{trip.car.nickname}}</strong> | 
+            <ng-pluralize count="trip.seats_available"
+                             when="{'0': 'Full',
+                                 'one': '1 Seat',
+                                 'other': '{} Seats'}">
+            </ng-pluralize> 
+            <span ng-show="trip.female_only">| <i class="icon ion-female"></i></span> | {{trip.price}}
+          </h4>
+        </div>
+        <a class='item ng-cloak' href="#/tab/trips/{{trip.return_trip.id}}" ng-show="trip.return_trip.id">
+          <h4><i class='icon ion-arrow-return-left'></i> {{trip.return_trip.starting_point_name}} <i class="icon ion-arrow-right-c"></i> {{trip.return_trip.destination_name}}</h4>
+          <h4 class="ng-cloak">{{trip.return_trip.leaving_at_date}} at {{trip.return_trip.leaving_at_time}}</h4>
+          <h4 class='muted'>
+            <strong>{{trip.car.nickname}}</strong> | 
+            <ng-pluralize count="trip.return_trip.seats_available"
+                             when="{'0': 'Full',
+                                 'one': '1 Seat',
+                                 'other': '{} Seats'}">
+            </ng-pluralize> 
+            <span ng-show="trip.trip_return_trip.female_only">| <i class="icon ion-female"></i></span> | {{trip.return_trip.price}}
+          </h4>
+        </a>
+        <a href="#/cars/{{trip.car.id}}" class="item item-thumbnail-left item-text-wrap item-icon-right ng-cloak" ng-show="trip.car">
+          <img ng-src="{{trip.car.exterior}}" class="rounded-corners" width="40px" />
+          <h3>Car</h3>
+          <h4>{{trip.car.nickname}}</h4>
+          <p>
+            {{trip.car.year}} {{trip.car.make}}, {{trip.car.model}}
+          </p>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+        <a href="#/users/{{trip.user.id}}" class="item item-avatar item-text-wrap ng-cloak" ng-show="trip.user">
+          <img ng-src="{{trip.user.profile_picture_url}}">
+          <p>
+             {{trip.user.name}} | {{trip.user.age}} | <span ng-show="trip.user.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="trip.user.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="trip.user.gender == nil"><i class="icon ion-help"></i></span> - <strong>Driver</strong>
+          </p>
+          <h4><ng-pluralize count="trip.user.reviews.length"
+                           when="{'0': 'No Reviews',
+                               'one': '1 Review',
+                               'other': '{} Reviews'}"></ng-pluralize>
+          </h4>
+        </a>
+        <a href="#/users/{{passenger.id}}" ng-repeat="passenger in trip.passengers" class="item item-avatar item-text-wrap">
+          <img ng-src="{{passenger.profile_picture_url}}">
+          <p>
+             {{passenger.name}} | {{passenger.age}} | <span ng-show="passenger.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="passenger.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="passenger.gender == nil"><i class="icon ion-help"></i></span> - <strong>Passenger</strong>
+          </p>
+          <h4><ng-pluralize count="passenger.reviews.length"
+                           when="{'0': 'No Reviews',
+                               'one': '1 Review',
+                               'other': '{} Reviews'}"></ng-pluralize>
+          </h4>
+        </a>
+      </div>
+      
+      <div class="list" ng-show="trip.chat_rooms">
+        <!-- TODO if passenger show most recent message of current-chat you are involved with -->
+        <div class='item'>
+          <h3><i class="icon ion-chatboxes"></i> Chats</h3>
+        </div>
+        <a ng-repeat="chat_room in trip.chat_rooms" href="#/trips/{{trip.id}}/chat_rooms/{{chat_room.id}}" class="item item-text-wrap item-avatar">
+          <img ng-src="{{chat_room.message_author_pic}}"/>
+          <p>{{chat_room.message_content}}</p>
+          <p class='muted small text-right'>
+             {{chat_room.message_author_name}} said {{chat_room.message_time_ago}} ago
+          </p>
+        </a> 
+      </div>
+      <div class="list" ng-show="trip.current_user">
+        <div class="item item-divider"> 
+          <ng-pluralize count="trip.matching_requests.length"
+                               when="{'0': '0 Matching Coride Requests',
+                                   'one': '1 Matching Request',
+                                   'other': '{} Matching Requests'}"></ng-pluralize></div>
+        <div ng-include src="'templates/request.html'" ng-repeat="request in trip.matching_requests"></div>        
+      </div>
+
+      <button ng-click="startChat()" ng-show="showChatBtn" class="button button-full button-positive">
+        <i class="icon ion-chatboxes"></i> Contact Driver
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

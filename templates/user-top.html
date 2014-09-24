@@ -1,0 +1,57 @@
+<div class='user-tab-top'>
+  <div class='user-details ng-cloak' ng-show="user">
+    <div class="profile-picture text-center">
+      <img ng-src="{{user.profile_picture_url}}" class="profile-picture" />
+    </div>
+    <div class='padding stats muted'>
+      <div class='pull-left'>
+        {{user.trips_count}} Drove
+      </div>
+      <div class='pull-right'>
+        {{user.passenger_count}} Corided
+      </div>
+    </div>
+    <div class='muted small text-center'> 
+      {{user.age}} 
+      | <span ng-show="user.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="user.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="user.gender == nil"><i class="icon ion-help"></i></span> 
+      | <i class="icon ion-chatbubbles"></i> <span ng-switch="user.conversation_level">
+          <span ng-switch-when="1">Shy</span>
+          <span ng-switch-when="2">Quiet</span>
+          <span ng-switch-when="3">Friendly</span>
+          <span ng-switch-when="4">Talkative</span>
+          <span ng-switch-when="5">Chatty</span>
+          <span ng-switch-default>Friendly</span>
+        </span>
+    </div>
+    <div class='item item-text-wrap no-top-border'>
+      <h3>About</h3>
+      <p class='muted'>{{user.bio}}</p>
+    </div>
+    <a href="#/users/{{user.id}}/reviews" class="item item-icon-right">
+      <h3><ng-pluralize count="user.reviews.length"
+                       when="{'0': '0 Reviews',
+                           'one': '1 Review',
+                           'other': '{} Reviews'}"></ng-pluralize>
+      </h3>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </a>
+    <a href="#/reviews/new/{{user.id}}" class="item" ng-show="user.review_type">
+      New Review
+    </a>
+    
+    <a href="#/cars/{{car.id}}" ng-repeat="car in user.cars" class="item item-button-right item-text-wrap">
+      <div class="buttons">
+        <img ng-src="{{car.exterior_url}}" class="rounded-corners avatar-right" width="40px" />
+        <img ng-src="{{car.interior_url}}" class="rounded-corners avatar-right" width="40px" />
+      </div>
+      <h3>{{car.nickname}}</h3>
+      <p>
+        {{car.year}} {{car.make}}, {{car.model}}
+      </p>
+    </a>
+    <a href="#/cars/new" class="item item-icon-right" ng-show="user_tab">
+      <h3>Add Car</h3>
+      <i class="icon ion-plus-round icon-accessory"></i>
+    </a>
+  </div>
+</div>

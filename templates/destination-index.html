@@ -1,0 +1,96 @@
+<ion-view title="{{current_city.name}}">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear ng-cloak" ng-show="navbuttons" ng-click="navbuttons.left.click()">{{navbuttons.left.title}}</button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear ng-cloak" ng-show="navbuttons" ng-click="navbuttons.right.click()">{{navbuttons.right.title}}</button>
+  </ion-nav-buttons>
+  <ion-content has-header="true" has-tabs="true">
+    <a ng-click="banner.click()" class='button button-full button-energized button-add-profile-pic' ng-show="banner.click">
+      <i class="icon" ng-class="banner.icon"></i> {{banner.text}}
+    </a>
+    <map id="map"
+      center="[49.07, -89.40]"
+      disable-default-u-i="true" 
+      zoom="4"
+      minZoom="2"
+      maxZoom="9"
+      scrollwheel="false"
+      mapTypeId="google.maps.MapTypeId.ROADMAP">
+    </map>
+    <ion-list scroll="true">
+      <div id="map-canvas"></div>
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i> 
+          <input type="text" placeholder="Destination" ng-model="query"></input>
+        </label>
+        <button class="button button-small button-clear" ng-click="showModal()">
+          <i class="icon ion-gear-a"></i>
+        </button>
+      </div>
+
+      <ion-item ng-repeat="destination in destinations | filter:query" type="item-text-wrap" href="#/tab/trips/{{current_city.id}}/{{destination.id}}">
+        <img ng-src="img/destination_icon.png" class="pull-left" width="12px" style="margin-right:5px;"><h3>{{destination.name}}</h3>
+        <p>
+          {{destination.lowest_price}}<br>
+          {{destination.rides_count}} Corides | {{destination.requests_count}} Requests
+        </p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+<script id="trip-filter-modal.html" type="text/ng-template">
+<div class="modal">
+  <ion-header-bar class="bar bar-header bar-positive">
+    <button class="button button-clear" ng-click="modal.hide()">Cancel</button>
+    <h1 class="title">Find Corides</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="padding">
+        <autocomplete content="Starting Point" label="From" field="filter.starting_point" icon="img/starting_point_icon.png"></autocomplete>
+        <autocomplete content="Destination" label="To" field="filter.destination" icon="img/destination_icon.png"></autocomplete>
+        <label class="item item-input">
+          <span class="input-label">Date</span>
+          <input type="text" readonly="true" ng-click="openFilterDateModal()" ng-model="filter.happening_on" />
+        </label>
+        <div class="item item-input item-select">
+          <div class="input-label">
+            Around
+          </div>
+          <select ng-model="filter.leaving_around">
+            <option selected>Whenever</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Evening</option>
+            <option>Night</option>
+          </select>
+        </div>
+        <li class="item item-toggle" ng-show="current_user.gender == 'female'">
+           <i class="icon ion-female"></i> <strong>Female</strong>
+           <label class="toggle toggle-positive">
+             <input type="checkbox" ng-model="filter.female_only">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+        <li class="item item-toggle" ng-show="current_user.student == true">
+           <i class="icon ion-pizza"></i> <strong>Student</strong>
+           <label class="toggle toggle-calm">
+             <input type="checkbox" ng-model="filter.student_only">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+        <button class="button button-full button-positive" ng-click="filterTrips()">Find Corides</button>
+      </div>
+      <ion-list ng-click="modal.hide()">
+        <div ng-include src="'templates/trip.html'" ng-repeat="trip in trips"></div>
+      </ion-list>
+    </div>
+  </ion-content>
+</div>
+</script>

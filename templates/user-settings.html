@@ -1,0 +1,105 @@
+<ion-view title="Settings">
+  <ion-nav-buttons side="left">
+    <button class="button icon ion-arrow-left-c" ng-click="back()"></button>
+  </ion-nav-buttons>
+  
+  <ion-content>
+    <form ng-submit="updateUser()">
+      <ul class="list card">
+        <div class="item"><h3><i class="icon ion-person"></i> Personal Settings</h3></div>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="text" placeholder="" ng-model="user.email" />
+        </label>
+        <label class="item item-input">
+          <span class="input-label">New Password</span>
+          <input type="password" placeholder="" ng-model="user.password"/>
+        </label>
+      </ul>
+
+      <ul class="list card">
+        <div class="item"><h3><i class="icon ion-ios7-email-outline"></i> Email Notifications</h3></div>
+        <li class="item item-toggle">
+           Departure Reminders
+           <label class="toggle toggle-calm">
+             <input type="checkbox" ng-model="user.email_departure_reminders">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+        <li class="item item-toggle">
+           Coride Request Alerts
+           <label class="toggle toggle-calm">
+             <input type="checkbox" ng-model="user.email_matching_requests_notifications">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+        <li class="item item-toggle">
+           Inbox Messages
+           <label class="toggle toggle-calm">
+             <input type="checkbox" ng-model="user.email_message_notifications">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+        <li class="item item-toggle">
+           Coride Digest
+           <label class="toggle toggle-calm">
+             <input type="checkbox" ng-model="user.digest">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+        <li class="item item-toggle">
+           News & Updates
+           <label class="toggle toggle-calm">
+             <input type="checkbox" ng-model="user.news_and_updates">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+      </ul>
+
+      <ul class="list card">
+        <div class="item"><h3><i class="icon ion-iphone"></i> Mobile Notifications</h3></div>
+        <li class="item item-toggle">
+           Departure Reminders
+           <label class="toggle toggle-positive">
+             <input type="checkbox" ng-model="user.mobile_departure_reminders">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+        <li class="item item-toggle">
+           Coride Request Alerts
+           <label class="toggle toggle-positive">
+             <input type="checkbox" ng-model="user.mobile_matching_request_notifications">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+        <li class="item item-toggle">
+           Inbox Messages
+           <label class="toggle toggle-positive">
+             <input type="checkbox" ng-model="user.mobile_message_notifications">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+        </li>
+      </ul>
+      <button type="submit" class="button button-block button-energized">
+        Update Notifications
+      </button>
+      <br>
+    </form>
+  </ion-content>
+</ion-view>

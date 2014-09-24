@@ -1,0 +1,38 @@
+<ion-view title="Reviews">
+  <ion-nav-buttons side="left">
+    <button class="button icon ion-arrow-left-c" ng-click="back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button icon ion-compose" ng-show="canReview" ng-click="newReview()"></button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" has-tabs="false">
+    <div class="card" ng-repeat="review in reviews">
+      <div class="item item-icon-left item-text-wrap">
+        <i class="icon ion-arrow-up-a green" ng-show="review.positive"></i>
+        <i class="icon ion-arrow-down-a red" ng-hide="review.positive"></i>
+        <strong>{{review.title}}</strong>
+      </div>
+      <div class="item item-text-wrap">
+        <div>
+          {{review.body}}
+        </div>
+      </div>
+      <div class="item item-divider" ng-show="review.type == 'driver'"><i class='icon ion-model-s'></i> Driver</div>
+      <div class="item item-divider" ng-show="review.type == 'passenger'"><i class='icon ion-android-location'></i> Passenger</div>
+      <div class="item item-divider" ng-show="review.type == 'reference'"><i class='icon ion-person-stalker'></i> Reference</div>
+      <a class="item item-avatar" href="#/users/{{review.user.id}}">
+        <img ng-src="{{review.user.profile_picture_url}}">
+        <h3>{{review.user.name}}</h3>
+        <p>
+          {{review.user.name}} | {{review.user.age}} | <span ng-show="review.user.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="review.user.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="review.user.gender == nil"><i class="icon ion-help"></i></span>
+        </p>
+      </a>
+    </div>
+    <div class='item'>  
+      <a class="button button-block button-balanced" ng-click="getReviews()">
+        <i class="icon ion-compose"></i> Get Reviews
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

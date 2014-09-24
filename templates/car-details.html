@@ -1,0 +1,43 @@
+<ion-view title="{{car.nickname}}">
+  <ion-nav-buttons side="left">
+    <button class="button icon clear ion-arrow-left-c" ng-click="back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="edit()" ng-show="car.current_user">Edit</button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" has-tabs="false">
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class='row'>
+          <div class="col">
+            <img ng-src="{{car.exterior}}" width="100%" class="rounded-corners">
+          </div>
+          <div class="col">
+            <img ng-src="{{car.interior}}" width="100%" class="rounded-corners">
+          </div>
+        </div>
+        <p><strong>{{car.nickname}}</strong></p>
+        <p>{{car.year}}, {{car.make}} {{car.model}} ({{car.doors}} doors, {{car.seat_count}} Seats) {{car.color}}</p>
+      </div>
+      <div class="item item-divider">
+        Owner
+      </div>
+      <div class="item item-thumbnail-left item-avatar item-text-wrap">
+        <img ng-click="driverDetails()" src="{{car.user.profile_picture_url}}">
+        <p>
+          {{car.user.name}} | {{car.user.age}} | <span ng-show="car.user.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="car.user.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="car.user.gender == nil"><i class="icon ion-help"></i></span>
+        </p>
+        <h4>
+          {{car.user.trips_count}} Drove | {{car.user.passenger_count}} Corided
+        </h4>
+        <h4><ng-pluralize count="car.user.reviews.length"
+                         when="{'0': 'No Reviews',
+                             'one': '1 Review',
+                             'other': '{} Reviews'}"></ng-pluralize>
+        </h4>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>

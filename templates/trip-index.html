@@ -1,0 +1,30 @@
+<ion-view title="{{trips[0].destination.name}}">
+  <ion-nav-buttons side="left">
+    <button class="button icon ion-arrow-left-c" ng-click="back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-show="navbuttons.right" ng-click="navbuttons.right.click()">{{navbuttons.right.title}}</button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" scroll="true" has-tabs="true">
+    <a ng-click="banner.click()" class='button button-full button-energized button-add-profile-pic' ng-show="banner.click">
+      <i class="icon" ng-class="banner.icon"></i> {{banner.text}}
+    </a>
+    <map id="map"
+      center="[49.07, -89.40]"
+      disable-default-u-i="true" 
+      zoom="4"
+      minZoom="2"
+      maxZoom="9"
+      scrollwheel="false"
+      mapTypeId="google.maps.MapTypeId.ROADMAP">
+    </map>
+    <ion-list>
+      <div id="map-canvas"></div>
+      <div class="item item-divider" ng-show="corides">Corides</div>
+      <div ng-include src="'templates/trip.html'" ng-repeat="trip in corides"></div>
+      <div class="item item-divider" ng-show="requests">Requests</div>
+      <div ng-include src="'templates/request.html'" ng-repeat="request in requests"></div>
+    </ion-list>
+  </ion-content>
+</ion-view>

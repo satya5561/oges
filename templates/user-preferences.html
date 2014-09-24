@@ -1,0 +1,67 @@
+<div class="item mutual-friends ng-cloak" ng-show="!user_tab && user">
+  <h3 class="margin-none">Mutual Friends ({{mutual_friends.length}})</h3>
+  <div class="spinner text-center ng-cloak" ng-show="spinner">
+    <i class="ion-loading-c"></i>
+  </div>
+  <ion-scroll class="clear-fix" direction="x" ng-show="mutual_friends">
+    <div style="width: 500%">
+      <div ng-repeat="friend in mutual_friends" class="pull-left text-center">
+        <img ng-src="{{friend.picture}}" />
+        <p>{{friend.first_name}}</p>
+      </div>
+    </div>
+  </ion-scroll>
+</div>
+<div class='item item-button-right ng-cloak' ng-show="user">
+  <h3 class="margin-none">Verifications</h3>
+  <div class="buttons" style="margin: -5px">
+    <h1 class="margin-none">
+      <i class="icon ion-email energized" ng-show="user.confirmed"></i>
+      <i class="icon ion-university calm" ng-show="user.student"></i>
+      <i class="icon ion-social-facebook facebook-text" ng-show="user.facebook_uid"></i>
+      <i class="icon ion-card positive" ng-show="user.has_credit_card"></i>
+      <i class="icon ion-ios7-telephone royal" ng-show="user.phone"></i>
+    </h1>
+  </div>
+</div>
+<div class="item item-button-right ng-cloak" ng-show="user">
+  <h3>Preferences</h3>
+  <div class="buttons" style="margin: -5px">
+    <h1 class="margin-none">
+      <i class="icon ion-fork" ng-show="user.allows_eating"></i>
+      <i class="icon ion-music-note" ng-show="user.allows_music"></i>
+      <i class="icon ion-no-smoking" ng-show="!user.allows_smoking"></i>
+    </h1>
+  </div>
+</div>
+<div class="item item-text-wrap" ng-show="user.music">
+  <h3>Music, Books, and Movies</h3>
+  <p>{{user.music}}</p>
+</div>
+<div class="item item-text-wrap" ng-show="user.interests">
+  <h3>Interests and Hobbies</h3>
+  <p>{{user.interests}}</p>
+</div>
+<div class="item item-divider" ng-show="user_tab">
+  <h3>Add Verifications</h3>
+</div>
+<div class='item item-icon-left item-icon-right' ng-hide="user.facebook_uid || !user_tab" ng-click="verifyFacebook()">
+  <i class="icon ion-social-facebook"></i> 
+  Facebook
+  <i class="icon ion-android-add icon-accessory"></i> 
+</div>
+<div class="item item-icon-left item-icon-right" ng-hide="user.student || !user_tab" ng-click="verifyStudent()">
+  <i class="icon ion-university"></i> 
+  Student
+  <i class="icon ion-android-add icon-accessory"></i>
+</div>
+<div class="item item-icon-left item-icon-right" ng-hide="user.has_credit_card || !user_tab" ui-sref="^.payments">
+  <i class="icon ion-card"></i>
+  Credit Card
+  <i class="icon ion-android-add icon-accessory"></i>
+</div>
+<!-- <div class="item item-icon-left item-icon-right" ng-hide="user.phone || !user_tab" ng-click="verifyPhone()">
+  <i class="icon ion-ios7-telephone"></i>
+  Phone Number
+  <i class="icon ion-android-add icon-accessory"></i>
+</div>  --> 

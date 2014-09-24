@@ -1,0 +1,8 @@
+  <div class="item item-thumbnail-left item-avatar item-text-wrap">
+    <img ng-src="{{trip.user.profile_picture_url}}">
+    
+    <p>
+      {{trip.user.name}} | {{trip.user.age}} | <span ng-show="user.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="user.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="user.gender == nil"><i class="icon ion-help"></i></span>
+    </p>
+    <p>{{trip.user.bio}}</p>
+  </div>

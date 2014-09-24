@@ -1,0 +1,78 @@
+<div class="list">
+  <autocomplete content="Starting Point" label="From" field="trip.starting_point" icon="img/starting_point_icon.png" required></autocomplete>
+  <autocomplete content="Destination" label="To" field="trip.destination" icon="img/destination_icon.png" required></autocomplete>
+  <label class="item item-input">
+    <span class="input-label">Date</span>
+    <input type="text" readonly="true" ng-click="openDateModal()" ng-model="trip.leaving_at_date" required />
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Time</span>
+    <timepicker ng-model="trip.leaving_at_time" ng-change="changed()" hour-step="1" minute-step="30" show-meridian="true" readonly-input="true" mousewheel="false"></timepicker>
+  </label>
+  <label class="item item-toggle" ng-show="current_user.gender == 'female'">
+    <span class="input-label"><i class="icon ion-female"></i> Female-Only</span>
+    <label class="toggle toggle-calm">
+     <input type="checkbox" ng-model="trip.female_only">
+     <div class="track">
+       <div class="handle"></div>
+     </div>
+    </label>
+  </label>
+  <label class="item item-toggle" ng-show="current_user.student">
+    <span class="input-label"><i class="icon ion-pizza"></i> Student-Only</span>
+    <label class="toggle toggle-positive">
+     <input type="checkbox" ng-model="trip.student_only">
+     <div class="track">
+       <div class="handle"></div>
+     </div>
+    </label>
+  </label>
+</div>
+<div class="list" ng-hide="editTrip">
+  <div ng-hide="editTrip">
+    <div class="item item-toggle">
+       <strong>Return Trip</strong>
+       <label class="toggle toggle-balanced">
+         <input type="checkbox" ng-model="trip.round_trip" ng-click="roundTripCtrl()">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+       </label>
+    </div>
+    <div ng-show="trip.round_trip">
+      <label class="item item-input">
+        <span class="input-label">Return Date</span>
+        <input type="text" readonly="true" ng-click="openReturnDateModal()" ng-model="trip.return_trip_leaving_at_date" />
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Return Time</span>
+        <timepicker ng-model="trip.return_trip_leaving_at_time" ng-change="changed()" hour-step="1" minute-step="30" show-meridian="true" readonly-input="true" mousewheel="false"></timepicker>
+      </label>
+    </div>
+  </div>
+</div>
+<div class="list">
+  <label class="item item-input item-select">
+    <div class="input-label">
+      <i class="icon ion-model-s"></i> Car
+    </div>
+    <select ng-model="trip.car_id" ng-options="car.id as car.nickname for car in current_user.cars" required="true"></select>
+  </label>
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Seats
+    </div>
+    <select ng-model="trip.seats_for_sale" required="true">
+      <option ng-repeat="n in [1, 4] | makeRange">{{n}}</option>
+    </select>
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Fare</span>
+    <input type="text" class="input-right" placeholder="$0.00" pattern="\d*" ng-model="yourPrice" ng-change="setPrice({$price: yourPrice})" required/>
+  </label>
+  <div class="item item-input">
+    <span class="input-label muted">Fare + Fee</span>
+    <span class='pull-right trip-price muted'>${{trip.price}}</span>
+    <input type="hidden" ng-model="trip.price" required/>
+  </div>
+</div>

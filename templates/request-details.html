@@ -1,0 +1,72 @@
+<ion-view title="{{request.destination.name}}">
+  <ion-nav-buttons side="left">
+    <button class="button icon ion-arrow-left-c" ng-click="back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-class="navbuttons.right.icon" ng-click="navbuttons.right.click()" ng-show="navbuttons">{{navbuttons.right.title}}</button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" has-subheader="false" has-tabs="false">
+    <a ng-click="banner.click()" class='button button-full button-energized button-add-profile-pic' ng-show="banner.click">
+      <i class="icon" ng-class="banner.icon"></i> {{banner.text}}
+    </a>
+    <div class="card">
+      <div class="item">
+        <h3>Request</h3>
+      </div>
+      <map id="map"
+        center="[49.07, -89.40]"
+        disable-default-u-i="true" 
+        zoom="4"
+        minZoom="2"
+        maxZoom="9"
+        scrollwheel="false"
+        mapTypeId="google.maps.MapTypeId.ROADMAP">
+      </map>
+      <div class="item item-text-wrap">
+        <h4>{{request.starting_point.name}} <i class="icon ion-arrow-right-c"></i> {{request.destination.name}}</h4>
+        <h4>{{request.leaving_at_date}} around {{request.leaving_around}}</h4>
+        <button class="share-icon button button-clear ion-ios7-upload-outline" ng-click="shareTrip()"></button>
+      </div>
+      <a href="#/users/{{request.user.id}}" class="item item-avatar item-text-wrap">
+        <img ng-src="{{request.user.profile_picture_url}}">
+        <p>
+           {{request.user.name}} | {{request.user.age}} | <span ng-show="request.user.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="request.user.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="request.user.gender == nil"><i class="icon ion-help"></i></span> - <strong>Requester</strong>
+        </p>
+        <h4><ng-pluralize count="request.user.reviews.length"
+                         when="{'0': 'No Reviews',
+                             'one': '1 Review',
+                             'other': '{} Reviews'}"></ng-pluralize>
+        </h4>
+      </a>
+      <a href="#/users/{{passenger.id}}" ng-repeat="passenger in request.passengers" class="item item-avatar item-text-wrap">
+        <img ng-src="{{passenger.profile_picture_url}}">
+        <p>
+           {{passenger.name}} | {{passenger.age}} | <span ng-show="passenger.gender == 'female'"><i class="icon ion-female"></i></span> <span ng-show="passenger.gender == 'male'"><i class="icon ion-male"></i></span> <span ng-show="passenger.gender == nil"><i class="icon ion-help"></i></span> - <strong>Passenger</strong>
+        </p>
+        <h4><ng-pluralize count="passenger.reviews.length"
+                         when="{'0': 'No Reviews',
+                             'one': '1 Review',
+                             'other': '{} Reviews'}"></ng-pluralize>
+        </h4>
+      </a>
+      <a class='item' href="#/trips/{{request.return_trip.id}}" ng-show="request.return_trip">
+        <h3>Return request</h3>
+        <h4>{{request.leaving_at_date}} at {{request.leaving_at_time}}</h4>
+        <p> 
+          <ng-pluralize count="request.return_trip.seats_available"
+                           when="{'0': 'Full',
+                               'one': '1 Seat',
+                               'other': '{} Seats'}">
+          </ng-pluralize> | 
+          <i class="icon ion-chatboxes"></i> {{request.return_trip.chat_rooms.count}} | {{request.return_trip.price}}
+        </p>
+      </a>
+    </div>
+
+    <div class="card list" ng-show="request.current_user">
+      <div class="item item-divider">Matching Trips</div>
+      <div ng-include src="'templates/trip.html'" ng-repeat="trip in request.matching_trips"></div>
+    </div>
+  </ion-content>
+</ion-view>

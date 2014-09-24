@@ -1,0 +1,18 @@
+<ion-view title="New Request">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ng-click="back()">Cancel</button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="delete()">Remove</button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" has-tabs="false">
+    <div class="padding">     
+      <form ng-submit="updateRequest()">
+        <div ng-include src="'templates/request-form.html'"></div>
+        <br>
+        <button type="submit" class="button button-full button-energized">Edit Request Alert</button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

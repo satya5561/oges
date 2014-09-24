@@ -1,0 +1,16 @@
+<ion-view title="{{user.name}}">
+  <ion-nav-buttons side="right">
+    <button class="button clear icon ion-gear-a" ng-click="settings()"></button>
+  </ion-nav-buttons>
+  
+  <ion-content has-header="false" has-tabs="true" style="top:0;">
+    <div style="background-image:url('{{user.cover_picture_url}}');" class="cover-photo"></div>
+      <div ng-include src="'templates/user-top.html'"></div>
+      <div class="item item-divider" ng-show="user.future_trips">Upcoming Corides</div>
+      <div ng-include src="'templates/trip-small.html'" ng-repeat="trip in user.future_trips"></div>
+      <div class="item item-divider" ng-show="user.future_requests">Request Alerts</div>
+      <div ng-include src="'templates/request-no-pic.html'" ng-repeat="request in user.future_requests"></div>
+      <div ng-include src="'templates/user-preferences.html'"></div>
+    </div>
+  </ion-content>
+</ion-view>

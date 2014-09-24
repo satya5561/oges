@@ -1,0 +1,26 @@
+<table>
+  <tbody>
+    <tr class="text-center">
+      <td ng-click="incrementHours()"><a class="btn btn-link"><span class="icon ion-chevron-up"></span></a></td>
+      <td>&nbsp;</td>
+      <td ng-click="incrementMinutes()"><a class="btn btn-link"><span class="icon ion-chevron-up"></span></a></td>
+      <td ng-show="showMeridian"></td>
+    </tr>
+    <tr>
+      <td class="timepicker-integers" ng-class="{'has-error': invalidHours}">
+        <input type="text" ng-model="hours" ng-change="updateHours()" class="form-control text-center" ng-mousewheel="incrementHours()" ng-readonly="readonlyInput" maxlength="2">
+      </td>
+      <td>:</td>
+      <td class="timepicker-integers" ng-class="{'has-error': invalidMinutes}">
+        <input type="text" ng-model="minutes" ng-change="updateMinutes()" class="form-control text-center" ng-readonly="readonlyInput" maxlength="2">
+      </td>
+      <td ng-show="showMeridian" class="am-pm"><button type="button" class="button button-medium button-light text-center" ng-click="toggleMeridian()">{{meridian}}</button></td>
+    </tr>
+    <tr class="text-center">
+      <td ng-click="decrementHours()"><a class="btn btn-link"><span class="icon ion-chevron-down"></span></a></td>
+      <td>&nbsp;</td>
+      <td ng-click="decrementMinutes()"><a class="btn btn-link"><span class="icon ion-chevron-down"></span></a></td>
+      <td ng-show="showMeridian"></td>
+    </tr>
+  </tbody>
+</table>

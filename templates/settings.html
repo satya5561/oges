@@ -1,0 +1,22 @@
+<ion-view title="More">
+  <ion-nav-buttons side="left">
+    <button class="button icon ion-arrow-left-c" ng-click="back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" style="color:white;" ng-click="logout()">Logout</button>  
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" scroll="true" has-tabs="false">
+    <ion-list class="settings">
+      <a href="#/users/edit" class="item">Edit Profile</a>
+      <a href="#/users/settings" class="item">Account Settings</a>
+      <a href="#" class="item" ng-click="inviteFriends()">Invite Friends</a>
+      <a href="#" class="item" ng-click="getReviews()">Get References</a>
+      <a href="#/how-it-works" class="item">How It Works</a>
+      <a href="#/why-drive" class="item">Why Drive?</a>
+      <a href="#/contact" class="item">Contact Us</a>
+      <a href="#/terms" class="item">Terms of Service</a>
+      <a href="#/privacy" class="item">Privacy</a>
+    </ion-list>
+  </ion-content>
+</ion-view>

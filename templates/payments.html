@@ -1,0 +1,131 @@
+<ion-view title="Payment">
+  <ion-content class="has-header has-tabs">
+    <div class="list card">
+      <div class='item'>
+        <div class="row">
+          <div class="col-75">
+            <h3 ng-hide="cards.length">No Cards</h3>
+            <h3 ng-show="cards.length">Active Cards</h3>
+            <p>To Pay for Corides</p>
+          </div>
+          <div class="col">
+            <button class="button button-positive pull-right" ng-click="toggleNewCardForm()">Add</button>
+          </div>
+        </div>
+        
+        <div class="row" ng-repeat="card in cards">
+          <div class="col col-20">
+            <img ng-src="img/visa.png" ng-show="card.type == 'Visa'" width="40px">
+            <img ng-src="img/mastercard.png" ng-show="card.type == 'MasterCard'" width="40px">
+            <img ng-src="img/amex.png" ng-show="card.type == 'American Express'" width="40px">
+            <!-- TODO Visa, American Express, MasterCard, Discover, JCB, Diners Club, or Unknown. -->
+          </div>
+          <div class="col col-33">{{card.type}}</div>
+          <div class="col col-20">{{card.last4}}</div>
+          <div class="col">{{card.exp_month}}/{{card.exp_year}}</div>
+        </div>
+      </div>
+
+      <form ng-submit="createCard()" ng-show="show_card_form">
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="card.name" required title-case>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Number</span>
+          <input type="text" ng-model="card.number" pattern="\d*" required />
+        </label>
+        <label class="item item-input">
+          <span class="input-label">CSV</span>
+          <input type="text" ng-model="card.cvc" pattern="\d*" required />
+        </label>
+        <label class='item item-input'>
+          <span class="input-label">MM/YYYY</span>
+          <select ng-model="card.exp_month">
+            <option>01</option>
+            <option>02</option>
+            <option>03</option>
+            <option>04</option>
+            <option>05</option>
+            <option>06</option>
+            <option>07</option>
+            <option>08</option>
+            <option>09</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+          </select>
+           / 
+          <select ng-model="card.exp_year">
+            <option ng-repeat="n in [2014, 2050] | makeRange">{{n}}</option>
+          </select>
+        </label>
+        <div class="item row">
+          <div class="col">
+            <button class="button button-light button-block" ng-click="toggleNewCardForm()">Cancel</button>
+          </div>
+          <div class="col col-66">
+            <button class="button button-positive button-block">Add Card</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <div class="list card">
+      <div class='item'>
+        <div class="row">
+          <div class="col-75">
+            <h3 ng-hide="recipient.bank_name">No Account</h3>
+            <h3 ng-show="recipient.bank_name">Active Account</h3>
+            <p>To Get Paid for Driving</p>    
+          </div>
+          <div class="col">
+            <button class="button button-balanced pull-right" ng-click="toggleNewRecipientForm()">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="item item-text-wrap" ng-show="recipient.bank_name">
+        <h3>{{recipient.last4}} - {{recipient.bank_name}}</h3>
+      </div>
+      <form ng-submit="createRecipient()" ng-show="show_recipient_form">
+        <label class="item item-input">
+          <span class="input-label">Acct Name</span>
+          <input type="text" ng-model="new_recipient.name" required title-case />
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Routing #</span>
+          <input type="text" ng-model="new_recipient.routing" pattern="\d*" required />
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Account #</span>
+          <input type="text" ng-model="new_recipient.account_number" pattern="\d*" required />
+        </label>
+        <div class="item row">
+          <div class="col">
+            <button class="button button-light button-block" ng-click="toggleNewRecipientForm()">Cancel</button>
+          </div>
+          <div class="col col-66">
+            <button class="button button-balanced button-block">Create Account</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="list card">
+      <div class="item">
+        <h3>You've Earned</h3>
+        <div class="row">
+          <div class='col'><div class="balance">{{current_user.balance}}</div></div>
+          <div class="col text-right">
+            <div ng-show="recipient.bank_name && current_user.balance != '$0.00'">
+              <button class="button" ng-click="newTransfer()" class="button-balanced">Get Paid</button>
+            </div>
+            <div ng-hide="recipient.bank_name">
+              <p ng-click="toggleNewRecipientForm()">Add Account</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

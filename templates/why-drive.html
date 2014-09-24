@@ -1,0 +1,72 @@
+<ion-view title="">
+  <ion-nav-buttons side="left">
+    <button class="button button-light button-clear no-animation"
+            ng-click="back()" ng-if="!slideIndex">
+      Skip
+    </button>
+    <button class="button button-light button-clear no-animation"
+            ng-click="previous()" ng-if="slideIndex > 0">
+      Previous
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right"> 
+    <button class="button button-light button-clear no-animation"
+            ng-click="next()" ng-if="slideIndex != 3">
+      Next
+    </button>
+    <button class="button button-light button-clear no-animation"
+            ng-click="addCar()" ng-if="slideIndex == 3">
+      Add Car
+    </button>
+  </ion-nav-buttons>
+  <ion-slide-box on-slide-changed="slideChanged(index)">
+    <ion-slide style="background-image: url('./img/swipe-img/2x/why-drive/tutorial-bg-0-2x.png');
+                      background-size: cover;
+                      background-repeat: no-repeat;" class="padding">
+      <h2>Meet Coriders</h2>
+      <div class="hr"><hr /></div>
+      <h3>
+        Become a driver and meet friendly people in your city and beyond.
+      </h3>
+      <p>
+        Coride offers a unique way to get where you're going while making new friends.
+      </p>
+    </ion-slide>
+    <ion-slide style="background-image: url('./img/swipe-img/2x/why-drive/tutorial-bg-1-2x.png');
+                      background-size: cover;
+                      background-repeat: no-repeat;" class="padding">
+      <h2>Save Money</h2>
+      <div class="hr"><hr /></div>
+      <h3>
+        Travel isn't cheap. It helps to split costs by coriding.
+      </h3>
+      <p>
+        You're in the driver's seat, you set the fare of your corides.
+      </p>
+    </ion-slide>
+    <ion-slide style="background-image: url('./img/swipe-img/2x/why-drive/tutorial-bg-2-2x.png');
+                      background-size: cover;
+                      background-repeat: no-repeat;" class="padding">
+      <h2>Build Trust</h2>
+      <div class="hr"><hr /></div>
+      <h3>
+        Coride offers profiles where you can read reviews and get to know your passengers.
+      </h3>
+      <p>
+        Use your profile to specify preferences for music, eating &amp; conversation while driving.
+      </p>
+    </ion-slide>
+    <ion-slide style="background-image: url('./img/swipe-img/2x/why-drive/tutorial-bg-3-2x.png');
+                      background-size: cover;
+                      background-repeat: no-repeat;" class="padding">
+      <h2>Do Your Part</h2>
+      <div class="hr"><hr /></div>
+      <h3>
+        We only have one earth. Let's take care of it.
+      </h3>
+      <p>
+        Ridesharing reduces emissions into our atmosphere.
+      </p>
+    </ion-slide>
+  </ion-slide-box>
+</ion-view>

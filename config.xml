@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="co.coride.app" version="1.0.3" xmlns:android="http://schemas.android.com/apk/www/res/android" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Coride</name>
+    <description>
+        A Network of Friendly People that Share Corides.
+    </description>
+    <author email="team@coride.co" href="https://coride.co">
+        The Coride Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access origin="*.google.com" />
+    <access origin="*.googleapis.com" />
+    <preference name="fullscreen" value="false" /> <!-- to keep keyboard from covering inputs -->
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="TopActivityIndicator" value="whiteLarge" /> 
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="true" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="EnableLocation" value="true" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" /> <!-- to keep keyobard from covering inputs -->
+
+    <feature name="Keyboard">
+      <param name="android-package" value="com.ionic.keyboard.IonicKeyboard" />
+      <param name="onload" value="true" />
+    </feature>
+
+    <feature name="Keyboard">
+      <param name="ios-package" value="IonicKeyboard" onload="true" />
+    </feature>    
+
+    <feature name="SplashScreen">
+      <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+      <param name="ios-package" value="CDVSplashScreen"/>
+      <param name="onload" value="true" />
+    </feature>
+    
+    <!-- FACEBOOK -->
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+      <param name="APP_ID" value="614655775249853" />
+      <param name="APP_NAME" value="Coride.co" />
+    </gap:plugin>
+    
+    <!-- ANDROID -->
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="10000" />    
+    <platform name="android">
+      <icon src="www/res/icons/android/icon-36-ldpi.png" density="ldpi" />
+      <icon src="www/res/icons/android/icon-48-mdpi.png" density="mdpi" />
+      <icon src="www/res/icons/android/icon-72-hdpi.png" density="hdpi" />
+      <icon src="www/res/icons/android/icon-96-xhdpi.png" density="xhdpi" />
+      <icon src="www/res/icons/android/icon-96-xhdpi.png" density="xxhdpi" />
+      <splash src="www/res/screen/android/screen-hdpi-portrait.png" density="hdpi"/>
+      <splash src="www/res/screen/android/screen-ldpi-portrait.png" density="ldpi"/>
+      <splash src="www/res/screen/android/screen-mdpi-portrait.png" density="mdpi"/>
+      <splash src="www/res/screen/android/screen-xhdpi-portrait.png" density="xhdpi"/>
+    </platform>
+
+    <!-- IPHONE  -->
+    <platform name="ios">
+      <splash src="www/res/screen/ios/Default568@2x~iphone.png" width="640" height="1136" />
+      <splash src="www/res/screen/ios/Default~iphone.png" width="320" height="480" />
+      <splash src="www/res/screen/ios/Default@2x~iphone.png" width="640" height="960" />
+      <icon src="www/res/icons/ios/icon-72.png" width="72" height="72" />
+      <icon src="www/res/icons/ios/icon-72@2x.png" width="144" height="144" />
+      <icon src="www/res/icons/ios/icon.png" width="57"  height="57"  />
+      <icon src="www/res/icons/ios/icon@2x.png" width="114" height="114" />
+    </platform>
+    <!-- IPAD -->
+<!-- su -->
+</widget>
